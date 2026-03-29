@@ -22,6 +22,7 @@ export default function Navbar() {
         <Link href="/prescriptions" className={styles.link}>Prescriptions</Link>
         <Link href="/vitamins" className={styles.link}>Vitamins & Supplements</Link>
         <Link href="/devices" className={styles.link}>Medical Devices</Link>
+        <Link href="/admin" className={styles.link} style={{ color: 'var(--warning)', fontWeight: 'bold' }}>Admin</Link>
       </div>
 
       {/* Action Icons */}
