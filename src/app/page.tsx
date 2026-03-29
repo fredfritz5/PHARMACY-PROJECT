@@ -41,6 +41,8 @@ const POPULAR_PRODUCTS = [
   },
 ];
 
+import SearchBar from "@/components/SearchBar";
+
 export default function Home() {
   return (
     <div className={styles.main}>
@@ -66,14 +68,8 @@ export default function Home() {
             Access thousands of wellness products and manage your prescriptions with just a few clicks. Verified by pharmacists.
           </p>
           
-          <div className={`${styles.searchContainer} animate-fade-in`} style={{ animationDelay: '0.3s' }}>
-            <Search className={styles.searchIcon} />
-            <input 
-              type="text" 
-              className={styles.searchInput} 
-              placeholder="Search for medications, vitamins, or symptoms..." 
-            />
-            <button className={styles.searchBtn}>Search</button>
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <SearchBar />
           </div>
         </div>
       </section>

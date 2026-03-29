@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Stethoscope, ShoppingCart, User, Search, Menu } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
+  const { totalItems } = useCart();
+
   return (
     <nav className={styles.navbar}>
       {/* Logo */}
@@ -24,14 +29,25 @@ export default function Navbar() {
         <button className={styles.iconBtn} aria-label="Search">
           <Search size={20} />
         </button>
-        <button className={styles.iconBtn} aria-label="Cart">
+        <Link href="/cart" className={styles.iconBtn} aria-label="Cart" style={{ position: 'relative' }}>
           <ShoppingCart size={20} />
-        </button>
-        <button className={styles.iconBtn} aria-label="Account">
+          {totalItems > 0 && (
+            <span style={{
+              position: 'absolute', top: 0, right: 0, 
+              background: 'var(--brand-primary)', color: 'white', 
+              fontSize: '0.65rem', padding: '0.1rem 0.35rem', 
+              borderRadius: '50%', fontWeight: 'bold',
+              transform: 'translate(25%, -25%)'
+            }}>
+              {totalItems}
+            </span>
+          )}
+        </Link>
+        <Link href="/dashboard" className={styles.iconBtn} aria-label="Account">
           <User size={20} />
-        </button>
+        </Link>
         {/* Mobile menu icon (visible only on small screens via CSS/JS logic typically) */}
-        <button className={`${styles.iconBtn} md:hidden`} aria-label="Menu" style={{ display: 'none' /* Implement mobile toggle logic later */}}>
+        <button className={`${styles.iconBtn} md:hidden`} aria-label="Menu" style={{ display: 'none' }}>
           <Menu size={20} />
         </button>
       </div>
